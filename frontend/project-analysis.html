@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calvixo Cafe - Project Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b35, #e84393);
+            color: #fff;
+            padding: 40px 0 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .15);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 8px;
+            font-size: 1.05rem;
+            opacity: .95;
+        }
+
+        h2.section {
+            margin: 40px 0 15px;
+            font-size: 1.5rem;
+            color: #e84393;
+            border-left: 5px solid #ff6b35;
+            padding-left: 12px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+            border: 1px solid #eef0f6;
+        }
+
+        .card h3 {
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+        }
+
+        .card p {
+            color: #475569;
+            font-size: .95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ffe3e3;
+            color: #e84393;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: .75rem;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+
+        .badge.blue {
+            background: #e0f2fe;
+            color: #0284c7;
+        }
+
+        .badge.green {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .badge.purple {
+            background: #ede9fe;
+            color: #7c3aed;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-size: .85rem;
+            color: #be185d;
+        }
+
+        .tree {
+            font-family: Consolas, monospace;
+            font-size: .85rem;
+            background: #0f172a;
+            color: #a5f3fc;
+            padding: 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.5;
+        }
+
+        .tree .dir {
+            color: #fbbf24;
+        }
+
+        .tree .file {
+            color: #a5f3fc;
+        }
+
+        ul.data {
+            margin: 10px 0 0 20px;
+        }
+
+        ul.data li {
+            margin: 4px 0;
+            color: #475569;
+        }
+
+        .flow {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 10px;
+            font-size: .9rem;
+        }
+
+        .flow b {
+            color: #e84393;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: .88rem;
+        }
+
+        th,
+        td {
+            border: 1px solid #e2e8f0;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #334155;
+        }
+
+        tr:nth-child(even) {
+            background: #fafbfd;
+        }
+
+        .note {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 14px 0;
+            font-size: .92rem;
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media(max-width:700px) {
+            .grid2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #94a3b8;
+            font-size: .85rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>🍔 Calvixo Cafe — Complete Project Analysis</h1>
+        <p>React 19 + Vite + Tailwind 4 + Bootstrap 5 + React Router 7</p>
+    </header>
+
+    <div class="container">
+
+        <!-- TECH STACK -->
+        <h2 class="section">🛠️ Tech Stack (package.json)</h2>
+        <div class="card">
+            <table>
+                <tr>
+                    <th>Package</th>
+                    <th>Version</th>
+                    <th>Used For</th>
+                </tr>
+                <tr>
+                    <td>react / react-dom</td>
+                    <td>^19.2.7</td>
+                    <td>UI framework</td>
+                </tr>
+                <tr>
+                    <td>react-router-dom</td>
+                    <td>^7.18.1</td>
+                    <td>Routing (BrowserRouter, Routes, Route, Link, Navigate)</td>
+                </tr>
+                <tr>
+                    <td>tailwindcss + @tailwindcss/vite</td>
+                    <td>^4.3.3</td>
+                    <td>Utility CSS</td>
+                </tr>
+                <tr>
+                    <td>bootstrap</td>
+                    <td>^5.3.8</td>
+                    <td>Carousel & grid components</td>
+                </tr>
+                <tr>
+                    <td>react-icons</td>
+                    <td>^5.7.0</td>
+                    <td>Icons (fa/gi/md)</td>
+                </tr>
+                <tr>
+                    <td>lucide-react</td>
+                    <td>^1.28.0</td>
+                    <td>Icons</td>
+                </tr>
+                <tr>
+                    <td>react-fast-marquee</td>
+                    <td>^1.6.5</td>
+                    <td>Customer reviews scrolling</td>
+                </tr>
+                <tr>
+                    <td>recharts</td>
+                    <td>^3.10.1</td>
+                    <td>Admin dashboard charts</td>
+                </tr>
+                <tr>
+                    <td>vite, oxlint</td>
+                    <td>^8.1.1, ^1.71.0</td>
+                    <td>Build tool + linter</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- ENTRY POINT -->
+        <h2 class="section">🚪 Entry Point</h2>
+        <div class="card">
+            <h3><code>src/main.jsx</code> — Root</h3>
+            <p>App ko <code><BrowserRouter></code> & <code><StrictMode></code> ke andar render karta hai. Bootstrap
+                CSS+JS bhi yahan load hota hai.</p>
+            <div class="flow">
+                <b>Flow:</b> <code>main.jsx</code> → render <code><App/></code> (BrowserRouter ke andar)
+            </div>
+
+            <h3 style="margin-top:16px;"><code>src/App.jsx</code> — Main App</h3>
+            <p>Sirf <code><Navbar /></code> aur <code><Footer /></code> render karta hai. <code>RegisterLoginUser</code>
+                aur <code>AdminDashboard</code> filhal <b>comment</b> hain (disabled). Saare page routes
+                <code>Navbar</code> ke andar <code>Navbar_Route</code> se handle hote hain.
+            </p>
+            <div class="flow">
+                <b>Flow:</b> <code>App.jsx</code> → <code><Navbar/></code> (jo khud routs handle karta hai) +
+                <code><Footer/></code>
+            </div>
+        </div>
+
+        <!-- DIRECTORY STRUCTURE -->
+        <h2 class="section">📂 Folder Structure</h2>
+        <div class="card">
+            <div class="tree"><span class="dir">src/
+                    ├── main.jsx</span> <span class="file">(entry - BrowserRouter)</span>
+                <span class="dir">├── App.jsx</span> <span class="file">(Navbar + Footer)</span>
+                │
+                ├── <span class="dir">components/</span> <span class="file">(sab public pages/UI yahan)</span>
+                │ ├── CalvixoLogo.jsx <span class="file">(SVG logo, reusable)</span>
+                │ ├── footer/Footer.jsx
+                │ ├── navbar/
+                │ │ ├── Navbar.jsx <span class="file">(marquee + logo + links + routes)</span>
+                │ │ └── NavRoutes/
+                │ │ ├── Navbar_Link.jsx <span class="file">(nav menu links)</span>
+                │ │ └── Navbar_Route.jsx <span class="file">(saare <Route> yahan)</span>
+                │ ├── Homepage/Home.jsx <span class="file">(Home page)</span>
+                │ │ ├── Card/ (Cards, Card_link, Card_route)
+                │ │ └── best_selling/ (best_items, Offer_banner, Review, Fast_functionality)
+                │ │ └── elements/ (Carousel, card-items/)
+                │ ├── Menu/Menu.jsx <span class="file">(food filter)</span>
+                │ │ └── menu_all/ (Menu_Nevbar, Menu_items, ...)
+                │ ├── Delivery/Delivery.jsx
+                │ │ └── delivery-components/HeroSection.jsx
+                │ ├── Party/Party.jsx
+                │ │ └── Party_pages/ (Partyall, BookParty)
+                │ ├── News/News.jsx
+                │ │ └── latestNews/LatestNews.jsx
+                │ ├── Careers/Careers.jsx
+                │ │ └── CareerPageDesigning.jsx
+                │ └── AllDatas/AllDatas.jsx <span class="file">(💾 CENTRAL DATA + icons)</span>
+                │
+                ├── <span class="dir">AllForms/</span> <span class="file">(auth + admin, disabled in App)</span>
+                │ ├── ApplyForJob.jsx
+                │ └── Login/
+                │ ├── RegisterUser.jsx
+                │ ├── UserLogin.jsx
+                │ └── AdminDashboard/
+                │ ├── AdminDashboard.jsx
+                │ ├── PagesOfAdminDashboard/ (HeadPage, AdminRoute, PagesFirst..Fourth, SidebarPages)
+                │ └── AdminElements/ (DashboardCard, Orders, charts, etc.)
+                │
+                └── <span class="dir">assets/</span> <span class="file">(images logo.png, *.jpg)</span>
+            </div>
+        </div>
+
+        <!-- DATA HUB -->
+        <h2 class="section">💾 Central Data File (Sab logic ka base)</h2>
+        <div class="card">
+            <h3><code>src/components/AllDatas/AllDatas.jsx</code></h3>
+            <p>Yeh poore project ka <b>single source of truth</b> hai. Saare components yahan se data import karte hain.
+                Icons bhi yahin sathe JSX me defined hain.</p>
+            <table>
+                <tr>
+                    <th>Export</th>
+                    <th>Type</th>
+                    <th>Kahan use hota hai</th>
+                </tr>
+                <tr>
+                    <td><code>foods</code></td>
+                    <td>array</td>
+                    <td>Homepage best_items</td>
+                </tr>
+                <tr>
+                    <td><code>features</code></td>
+                    <td>array</td>
+                    <td>Homepage Fast_functionality</td>
+                </tr>
+                <tr>
+                    <td><code>Reviews</code></td>
+                    <td>array</td>
+                    <td>Review marquee (Home/Delivery/Party)</td>
+                </tr>
+                <tr>
+                    <td><code>foodItems</code></td>
+                    <td>array (categorized)</td>
+                    <td>Menu_items (filter by category)</td>
+                </tr>
+                <tr>
+                    <td><code>Latest_News, events, galleryImages</code></td>
+                    <td>array</td>
+                    <td>News page</td>
+                </tr>
+                <tr>
+                    <td><code>Partypackages, Partythemes, steps, PartyFeatures, ChoosePartyfeatures, PartygalleryImages</code>
+                    </td>
+                    <td>array</td>
+                    <td>Party page</td>
+                </tr>
+                <tr>
+                    <td><code>Career* </code> (CareerPageDesignstats, Careerbenefits, Careeejobs, Careersteps,
+                        Careerteam, Employeebenefits, Employeereviews, CareergalleryImages, Jobcities)</td>
+                    <td>array</td>
+                    <td>Careers page</td>
+                </tr>
+                <tr>
+                    <td><code>dashboardCardData, deliveryData, popularFoodsData, RecentOrdersData, Menu_foods, Menu_stats, deliveryPartnersData, SidebarPagesDataRoute</code>
+                    </td>
+                    <td>array</td>
+                    <td>Admin Dashboard</td>
+                </tr>
+            </table>
+            <div class="note"><b>⚠️ Important:</b> Data poori tarah hardcoded (static) hai. Koi API/backend nahi. Isliye
+                "Add to Cart", "Register", "Login", "Book Party", "Apply Job" buttons sirf UI hain — <b>logic aur state
+                    save nahi hota</b>. Agar tum logic build karna chahte ho, to yahi se start karo.</div>
+        </div>
+
+        <!-- ROUTING -->
+        <h2 class="section">🧭 Routing (React Router)</h2>
+        <div class="card">
+            <h3><code>src/components/navbar/NavRoutes/Navbar_Route.jsx</code></h3>
+            <p>Saare public routes yahan ek jagah defined hain. Yeh <code>Navbar</code> ke andar render hota hai.</p>
+            <table>
+                <tr>
+                    <th>Route Path</th>
+                    <th>Component</th>
+                    <th>Page</th>
+                </tr>
+                <tr>
+                    <td><code>/</code></td>
+                    <td><code>Navigate to /Home</code></td>
+                    <td>Redirect</td>
+                </tr>
+                <tr>
+                    <td><code>/Home</code></td>
+                    <td><code><Home/></code></td>
+                    <td>Homepage</td>
+                </tr>
+                <tr>
+                    <td><code>/Menu</code></td>
+                    <td><code><Menu/></code></td>
+                    <td>Menu</td>
+                </tr>
+                <tr>
+                    <td><code>/Delivery</code></td>
+                    <td><code><Delivery/></code></td>
+                    <td>Delivery</td>
+                </tr>
+                <tr>
+                    <td><code>/News</code></td>
+                    <td><code><News/></code></td>
+                    <td>News</td>
+                </tr>
+                <tr>
+                    <td><code>/Party</code></td>
+                    <td><code><Party/></code></td>
+                    <td>Party</td>
+                </tr>
+                <tr>
+                    <td><code>/Careers</code></td>
+                    <td><code><Careers/></code></td>
+                    <td>Careers</td>
+                </tr>
+            </table>
+            <div class="flow"><b>Link → Route:</b> <code>Navbar_Link</code> me <code><Link to="/Menu"></code> →
+                <code>Navbar_Route</code> me <code><Route path="/Menu"></code> → page render.
+            </div>
+            <div class="note"><b>⚠️ Note:</b> Login/Admin/Register abhi <b>kisi route se linked nahi</b> hain.
+                <code>App.jsx</code> me comment hain. Unhe route dena hoga ya toggle karna hoga.
+            </div>
+        </div>
+
+        <!-- COMPONENT TREE -->
+        <h2 class="section">🌳 Component Tree (Kaun kisko render karta hai)</h2>
+        <div class="card">
+            <div class="tree">App.jsx
+                ├── Navbar.jsx
+                │ ├── Navbar_Link.jsx (menu links)
+                │ ├── Navbar_Route.jsx (saare Routes)
+                │ │ ├── Home.jsx
+                │ │ │ ├── Carousel.jsx
+                │ │ │ ├── Cards.jsx
+                │ │ │ │ ├── Card_link.jsx (state: category)
+                │ │ │ │ └── Card_route.jsx (switch → Momos/Samosa/Manchurian/Burger)
+                │ │ │ ├── best_items.jsx (foods data)
+                │ │ │ ├── Fast_functionality.jsx (features data)
+                │ │ │ ├── Offer_banner.jsx
+                │ │ │ └── Review.jsx (react-fast-marquee)
+                │ │ ├── Menu.jsx
+                │ │ │ ├── Menu_Nevbar.jsx (state: setFood)
+                │ │ │ └── Menu_items.jsx (state: wishlist toggle)
+                │ │ ├── Delivery.jsx
+                │ │ │ └── HeroSection.jsx (↓ Review.jsx)
+                │ │ ├── News.jsx
+                │ │ │ └── LatestNews.jsx (state: subscribe form)
+                │ │ ├── Party.jsx
+                │ │ │ └── Partyall.jsx (↓ Review + BookParty)
+                │ │ │ └── BookParty.jsx (form)
+                │ │ └── Careers.jsx
+                │ │ └── CareerPageDesigning.jsx (↓ ApplyForJob.jsx)
+                │ └── Footer.jsx
+
+                (Disabled) RegisterLoginUser.jsx → Register + Login sections (toggle by display:none)
+                (Disabled) AdminDashboard.jsx → HeadPage.jsx
+                └── SidebarPages.jsx (state: setRoutes)
+                └── AdminRoute.jsx (switch: routes → PagesFirst/Second/Third/Fourth)</div>
+        </div>
+
+        <!-- STATE MANAGEMENT -->
+        <h2 class="section">⚙️ State Management (Kaha kya state hai)</h2>
+        <div class="card">
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>State</th>
+                    <th>Kya karta hai</th>
+                </tr>
+                <tr>
+                    <td><code>Cards.jsx</code></td>
+                    <td><code>category</code></td>
+                    <td>Card ka active food (momos/samosa/manchurian/burger)</td>
+                </tr>
+                <tr>
+                    <td><code>Menu.jsx</code></td>
+                    <td><code>food</code></td>
+                    <td>Menu filter (All/Momos/Samosa/Burger/Manchurian)</td>
+                </tr>
+                <tr>
+                    <td><code>Menu_items.jsx</code></td>
+                    <td><code>wishlist</code> object</td>
+                    <td>Heart toggle (favourite item)</td>
+                </tr>
+                <tr>
+                    <td><code>LatestNews.jsx</code></td>
+                    <td><code>fromInp</code></td>
+                    <td>Subscribe email input (abhi sirf console.log)</td>
+                </tr>
+                <tr>
+                    <td><code>SidebarPages.jsx</code></td>
+                    <td>via <code>setRoutes</code></td>
+                    <td>Admin sidebar ka active page</td>
+                </tr>
+                <tr>
+                    <td><code>HeadPage.jsx</code></td>
+                    <td><code>routes</code></td>
+                    <td>Admin route state (upper level)</td>
+                </tr>
+            </table>
+            <div class="note"><b>📌 Pattern:</b> State <b>parent me</b> hoti hai, aur child tak <b>props</b> se jaati
+                hai (prop drilling). Jaise <code>Menu</code> → <code>Menu_Nevbar</code> (props: food, setFood) aur
+                <code>Menu_items</code> (props: food). Koi Context/Redux/Zustand nahi hai.
+            </div>
+        </div>
+
+        <!-- DATA FLOW PATTERNS -->
+        <h2 class="section">🔁 Data Flow / Logic Patterns</h2>
+        <div class="card">
+            <h3>1. Filter pattern (Menu)</h3>
+            <div class="flow"><code>foodItems.filter(cat => food === "All" || cat.category === food)</code> — Navbar
+                button state <code>food</code> set karta hai, <code>Menu_items</code> uske hisaab se categories filter
+                karta hai.</div>
+
+            <h3 style="margin-top:16px;">2. Switch/Render pattern (Card_route, AdminRoute)</h3>
+            <div class="flow"><code>switch(category)</code> → alag component return. Isi tarah <code>AdminRoute</code>
+                <code>routes</code> ke hisaab se PagesFirst/Second/Third/Fourth render karta hai.
+            </div>
+
+            <h3 style="margin-top:16px;">3. Map-render pattern (sab pages)</h3>
+            <div class="flow">Har array data (<code>foods</code>, <code>features</code>, <code>Reviews</code>,
+                <code>Partypackages</code>, jobs, benefits...) ko <code>.map()</code> se loop karke cards render hote
+                hain. Data sab <code>AllDatas.jsx</code> se aata hai.
+            </div>
+
+            <h3 style="margin-top:16px;">4. Toggle pattern (wishlist)</h3>
+            <div class="flow"><code>setWishlist(prev => ({...prev, [id]: !prev[id]}))</code> — heart icon on/off.
+                Object-key based toggle.</div>
+
+            <h3 style="margin-top:16px;">5. Form submit pattern (LatestNews)</h3>
+            <div class="flow"><code>SubmitHandler(e)</code> → <code>e.preventDefault()</code>, input reset, abhi bas
+                <code>console.log</code>. Button click pe page reload nahi hota.
+            </div>
+        </div>
+
+        <!-- ADMIN DASHBOARD -->
+        <h2 class="section">📊 Admin Dashboard (disabled)</h2>
+        <div class="card">
+            <p><code>AdminDashboard.jsx</code> → <code>HeadPage.jsx</code> → <code>SidebarPages</code> (menu) +
+                <code>AdminRoute</code> (page switch). Saare charts/cards <code>AdminElements/</code> me hain aur data
+                <code>AllDatas.jsx</code> se.
+            </p>
+            <table>
+                <tr>
+                    <th>Page</th>
+                    <th>Files (AdminElements)</th>
+                </tr>
+                <tr>
+                    <td>PagesFirst (Dashboard)</td>
+                    <td>SalesChartMonthly, SaleChartYearly, PopulerFoods, RecentOrders, DeliveryStatus</td>
+                </tr>
+                <tr>
+                    <td>PagesSecond (Menu Mgmt)</td>
+                    <td>Menu_header, Menu_Shows</td>
+                </tr>
+                <tr>
+                    <td>PageThird (Orders)</td>
+                    <td>Orders, Order_Details, Customer_Details</td>
+                </tr>
+                <tr>
+                    <td>PagesFourth (Delivery)</td>
+                    <td>DeliveryPartnerHeader, DeliveryFilter, Delivery_Partner_Details</td>
+                </tr>
+                <tr>
+                    <td>Support</td>
+                    <td>Sidebar, DashboardCard</td>
+                </tr>
+            </table>
+            <div class="note"><b>⚠️ Dead/Unused:</b> <code>Sidebar.jsx</code>, <code>DashboardCard.jsx</code>,
+                <code>UserLogin.jsx</code> abhi kisi component me use nahi ho rahe (imports orphan hain). Charts
+                recharts library use karte hain.
+            </div>
+        </div>
+
+        <!-- FORMS -->
+        <h2 class="section">📝 Forms (UI only)</h2>
+        <div class="card">
+            <table>
+                <tr>
+                    <th>Form File</th>
+                    <th>Fields</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td><code>RegisterUser.jsx</code></td>
+                    <td>Name, Mobile, Email, Password, Confirm, DOB, Gender, City, State, Pin, Address, Terms</td>
+                    <td>Register + Login sections (display toggle), no submit logic</td>
+                </tr>
+                <tr>
+                    <td><code>UserLogin.jsx</code></td>
+                    <td>Email, Password, Remember</td>
+                    <td>Empty file (padha gaya)</td>
+                </tr>
+                <tr>
+                    <td><code>ApplyForJob.jsx</code></td>
+                    <td>Name, Phone, Email, City, Position, Experience, Resume, Message</td>
+                    <td>UI only</td>
+                </tr>
+                <tr>
+                    <td><code>BookParty.jsx</code></td>
+                    <td>Name, Phone, Date, Guests, Package, Message</td>
+                    <td>UI only</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- CSS -->
+        <h2 class="section">🎨 Styling</h2>
+        <div class="card">
+            <p><code>src/App.css</code> + <code>src/index.css</code> me saare page styles hain. Bootstrap CDN main.jsx
+                se load. Inline styles bhi kaafi use hote hain (esp. admin pages). Tailwind 4 configured hai (via
+                @tailwindcss/vite) but classes ka limited use hai.</p>
+        </div>
+
+        <!-- WILL BUILD -->
+        <h2 class="section">🧩 Logic Build karne ke liye (Tum kya add kar sakte ho)</h2>
+        <div class="card">
+            <ul class="data">
+                <li><b>Cart:</b> "Add to Cart" buttons abhi dead hain — ek <code>CartContext</code> yaa state bana kar
+                    items add/remove karo.</li>
+                <li><b>Wishlist:</b> Menu_items me state local hai — use global (Context) karke Homepage se bhi sync
+                    karo.</li>
+                <li><b>Auth:</b> Register/Login forms me <code>onSubmit</code> + validation + localStorage/backend add
+                    karo.</li>
+                <li><b>Admin:</b> AdminRoute/SidebarPages me pages linked hain — bas App.jsx me uncomment karke route
+                    do.</li>
+                <li><b>News subscribe:</b> LatestNews me submit pe abhi sirf console.log — real validation + API baad
+                    me.</li>
+                <li><b>Booking/Apply:</b> BookParty & ApplyForJob forms me submit handler + data save karo.</li>
+                <li><b>Search/Toast:</b> Pehle se koi global notification ya loader system nahi hai — add kar sakte ho.
+                </li>
+            </ul>
+        </div>
+
+        <!-- SUMMARY -->
+        <h2 class="section">📋 Quick Summary</h2>
+        <div class="card">
+            <ul class="data">
+                <li>✅ React 19 SPA with React Router 7 — 6 public pages (Home, Menu, Delivery, News, Party, Careers).
+                </li>
+                <li>✅ <b>Single data hub</b>: <code>AllDatas.jsx</code> — saara content yahi se aata hai.</li>
+                <li>✅ State pattern: <b>parent state + prop drilling</b>. No Context/Redux yet.</li>
+                <li>✅ Routing <b>Navbar ke andar</b> centralized (<code>Navbar_Route.jsx</code>).</li>
+                <li>✅ Admin + Auth <b>built par disabled</b> (App.jsx me comment).</li>
+                <li>✅ Forms & buttons abhi <b>UI-only</b> — data save/logic kisi ke paas nahi.</li>
+            </ul>
+        </div>
+
+    </div>
+    <footer>Calvixo Cafe Project Analysis • Created for logic-building reference</footer>
+</body>
+
+</html>
