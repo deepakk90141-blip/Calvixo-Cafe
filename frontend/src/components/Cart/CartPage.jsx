@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '../../utils/api'
 import { UserContext } from '../../Context/UserContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -18,7 +18,7 @@ const CartPage = () => {
         if (!user) return
         setLoading(true)
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/cart/${user.id}/`)
+            const res = await api.get(`/cart/${user.id}/`)
             setItems(res.data.data || [])
         } catch (err) {
             setError(err.response?.data || err.message)
@@ -33,7 +33,7 @@ const CartPage = () => {
 
     const removeItem = async (id) => {
         try {
-            await axios.delete(`http://127.0.0.1:8000/cart/item/${id}/`)
+            await api.delete(`/cart/item/${id}/`)
             fetchCart()
         } catch (err) {
             console.error(err)
@@ -42,7 +42,7 @@ const CartPage = () => {
 
     const updateQuantity = async (id, newQty) => {
         try {
-            await axios.patch(`http://127.0.0.1:8000/cart/item/${id}/`, { quantity: newQty })
+            await api.patch(`/cart/item/${id}/`, { quantity: newQty })
             fetchCart()
         } catch (err) {
             console.error(err)

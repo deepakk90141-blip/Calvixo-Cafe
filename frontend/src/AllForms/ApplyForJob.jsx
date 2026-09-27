@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import axios from "axios";
+import api from "../utils/api";
 import { useToast } from "../Context/ToastContext";
 import {
     FaUser,
@@ -30,7 +30,7 @@ const ApplyForJob = () => {
         setSubmitting(true);
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/apply-job/", {
+            const response = await api.post("/apply-job/", {
                 full_name: fullName,
                 phone,
                 email,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../utils/api";
 import { useToast } from "../Context/ToastContext";
 import {
     FaUser,
@@ -25,7 +25,7 @@ const BookParty = () => {
         setSubmitting(true);
 
         try {
-            const response = await axios.post("http://127.0.0.1:8000/book-party/", {
+            const response = await api.post("/book-party/", {
                 full_name: fullName,
                 phone,
                 event_date: eventDate,
